@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script>
+    document.getElementById('a').style.backgroundImage="url(img.jpg)"; // specify the image path here
+
+  </script>
+  <script defer src="script.js"></script>
+  <style>
+    .button {
+    top:50%;
+    background-color:#0a0a23;
+    color: #fff;
+    border:none;
+    border-radius:10px;
+    margin: 1%;
+    font-family: 'Trebuchet MS', sans-serif;
+  }
+  form{
+  display: flex;
+  justify-content: center;
+  }
+  input{
+    width: 20%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-family: 'Trebuchet MS', sans-serif;
+    border-radius: 15px;
+  }
+  .hrefbutton{
+  background-color: black;
+  color: white;
+  font-family: 'Trebuchet MS', sans-serif;
+  
+  }
+  #room-container{
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+  }
+ .roomclass{
+  padding-right: 10px;
+  padding-left: 4px;
+  font-family: 'Trebuchet MS', sans-serif;
+  
+ }
+ .welcome{
+  display: flex;
+  justify-content: center;
+  font-family: 'Trebuchet MS', sans-serif;
+
+ }
+ body{
+  background-color: #92a8d1;
+ }
+.logo{
+  display: flex;
+  justify-content: center;
+  padding-left: 43%;
+  
+
+}
+  
+  </style>
+</head>
+<body>
+  
+
+  
+  <div id="room-container">
+    <% Object.keys(rooms).forEach(room => { %>
+      <div class="roomclass">Name of the room: <b><%= room %></b></div>
+      <a href="/<%= room %>"><button class="hrefbutton">Please click here to re-join</button></a>
+    <% }) %>
+  </div>
+  <h1 class="welcome">Welcome to the SRM Chat Application </h1><img class="logo" height="130px" width="130px" src="/images/logo.png"></body>
+  <form action="/room" method="POST">
+    <input name="room" class="input" type="text" required>
+    <button type="submit" class="button">Create New Room</button>
+  </form>
+</body>
+
+</html>
